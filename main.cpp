@@ -23,7 +23,7 @@ void dump(unsigned char* buf, int size) {
     if(ipv4->ip_p == 6){
         tcph = (libnet_tcp_hdr *)(buf +iplen);
         //printf("\n%d, %d\n",ntohs(tcph->th_dport),ntohs(tcph->th_sport));
-        if(ntohs(tcph->th_dport) == 80 || ntohs(tcph->th_sport)){
+        if(ntohs(tcph->th_dport) == 80 || ntohs(tcph->th_sport) == 80){
             int tcplen = tcph->th_off * 4;
             //printf("!!!dump!!!!!");
             memcpy(http, buf+tcplen+iplen, size-iplen-tcplen);
